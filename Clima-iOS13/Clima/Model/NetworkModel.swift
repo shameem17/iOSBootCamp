@@ -22,10 +22,11 @@ enum APIError: Error{
 
 struct WeatherManager{
     var delegate: WeatherManagerDelegate?
-    let baseUrl: String = "https://api.openweathermap.org/data/2.5/weather?appid=7bcd428df261afffce19a53499f2a91b&units=metric"
+    let appId: String = "your api id here"   //"7bcd428df261afffce19a53499f2a91b"
+    let baseUrl: String = "https://api.openweathermap.org/data/2.5/weather?"
     func fetchWeatherByCity(cityName: String){
         print("api calling")
-        let urlString = "\(baseUrl)&q=\(cityName)"
+        let urlString = "\(baseUrl)appid=\(self.appId)&units=metric&q=\(cityName)"
         if let url = URL(string: urlString){
             self.performUrlAction(with: url)
         }else{
